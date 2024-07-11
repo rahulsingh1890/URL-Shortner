@@ -12,13 +12,13 @@ public:
         srand(time(0));
     }
 
-    string shortenURL(const std::string& longURL) {
+    string shortenURL(string& longURL) {
         string shortURL = generateShortURL(6);
         urlMap[shortURL] = longURL;
         return shortURL;
     }
 
-    string getLongURL(const std::string& shortURL) {
+    string getLongURL(string& shortURL) {
         if (urlMap.find(shortURL) != urlMap.end()) {
 
             return urlMap[shortURL];
@@ -28,11 +28,11 @@ public:
     }
 
 private:
-    unordered_map<std::string, string> urlMap;
+    unordered_map<string, string> urlMap;
 
-    string generateShortURL(size_t len) {
+    string generateShortURL(int len) {
         string shortURL;
-        for (size_t i = 0; i < len; ++i) {
+        for (int  i = 0; i < len; ++i) {
             shortURL += 'a' + rand() % 26;
         }
         return shortURL;
